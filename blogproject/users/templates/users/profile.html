@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div >
+        <div style="width: 200px; height: 300px; background-color: antiquewhite;"><img src="{{user.profile.image.url}}" alt="" style="width: 200px; border-radius: 500px;"></div>
+        <h1>{{ request.user }}</h1>
+        <h4>{{user.email}}</h4>
+
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ u_form }}
+                {{ p_form }}
+            </fieldset>
+        </form>
+        <div class="form-group">
+            <button><a href="{% url 'profile-update'%}">Update Profile</a></button>
+        </div>
+
+    </div>
+
+
+{% endblock content %}
+    
