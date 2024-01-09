@@ -1,21 +1,22 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <div class="content-section">
+
+    <div class="form-box register auth-div">
+        <h2>Registration</h2>
         <form action="" method="post">
             {% csrf_token %}
             <fieldset class="form-group">
-                <h1>join today</h1>
                 {{ form }}
             </fieldset>
             <div class="form-group">
                 <button>sign up</button>
             </div>
+            <div class="login-register">
+              <p> Already have an account? <a href="{% url 'login' %}">Login</a></p>
+            </div>
         </form>
-        <div>
-            <small>already have an account? <a href="{% url 'login' %}">Login</a></small>
-        </div>
-    </div>
+      </div>
 
 
 {% endblock content %}

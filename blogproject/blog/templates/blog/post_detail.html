@@ -1,20 +1,36 @@
 {% extends 'blog/base.html' %}
 {% block content %}
+<div class="details">
 
-    <h1>Post Details</h1>
-
-    <div class="post" style="margin: 10px;">
+    <div class="post-detail" style="margin: 10px;">
+        <h1>Post Details</h1>
         {% if object.author == user %}
 
         <a href="{% url 'blog-update' object.id %}">Update</a>
         <a href="{% url 'blog-delete' object.id %}">Delete</a>
         {% endif %}
 
-        <img src="{{object.author.profile.image.url}}" alt="profile-img" style="width: 200px; height: 200px; border-radius: 500px;">
-        <p>{{object.author}}</p>
-        <h3>{{object.title}}</h3>
+        <div class="info" style="display:flex; align-items:center;">
+            <img src="{{post.author.profile.image.url}}" alt="profile-img" style="width: 60px; height: 60px; border-radius: 500px; margin-right: 5px;">
+            <div class="info-text">
+                <h4>{{post.author}}</h4>
+                <p>{{post.date_posted}}</p>
+            </div>
+        </div>
+
+        <h3>Title:</h3>
+        <p>{{object.title}}</p>
+
+        <h3>Ingredients:</h3>
+        <p>{{object.ingredients}}</p>
+
+        <h3>Instructions:</h3>
+        <p>{{object.instructions}}</p>
+
+        <img src="{{post.foodImg.url}}" alt="food-img" class="food-img">
         <br>
     </div>
 
+</div>
     
 {% endblock content %}

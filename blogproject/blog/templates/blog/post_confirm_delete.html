@@ -6,15 +6,12 @@
             {% csrf_token %}
             <fieldset class="form-group">
                 <h1>Delete Post</h1>
-                <h3>Are You Sure You Want to Delete Post {{object.title}}</h3>
+                <h3 style="text-align:center;">Are You Sure You Want to Delete Post {{object.title}}</h3>
+                <button style="margin: 10px auto;">Delete</button>
+                <a href="{% url 'blog-home' %}">Go Back</a>
             </fieldset>
-            <div class="form-group">
-                <button>Delete</button>
-            </div>
+    
         </form>
-        <div>
-            <a href="{% url 'blog-home' %}">Go Back</a>
-        </div>
     </div>
 
 

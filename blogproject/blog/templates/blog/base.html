@@ -1,35 +1,40 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>blog</title>
-    <link rel="stylesheet" href="{% static 'blog/styles.css' %}">
-</head>
-<body>
-
-    <div class="nav-bar">
-        {% if user.is_authenticated %}
-        <a href="{% url 'blog-home' %}">Home</a>
-        <a href="{% url 'blog-about' %}">About</a>
-        <a href="{% url 'blog-new' %}">Create Post</a>
-        <a href="{% url 'profile' %}">Profile</a>
-        <form method="post" action="{% url 'logout' %}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tasty Bees</title>
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+  </head>
+  <body>
+    <header>
+        <h2 class="TastyBees">Tasty Bees</h2>
+        <nav class="navigation">
+          {% if user.is_authenticated %}
+          <a href="{% url 'blog-home' %}">Home</a>
+          <a href="{% url 'blog-about' %}">About</a>
+          <a href="{% url 'blog-new' %}">Create Recipe</a>
+          <a href="{% url 'profile' %}">Profile</a>
+          <form method="post" action="{% url 'logout' %}">
             {% csrf_token %}
             <button type="submit">Logout</button>
-        </form>        
+          </form>   
+                {% else %}
+          <a href="{% url 'blog-about' %}">About</a>
+          <a href="{% url 'login' %}">Login</a>
+          <a href="{% url 'signup' %}">Signup</a>
+          {% endif %}
 
-            {% else %}
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'signup' %}">Signup</a>
-        {% endif %}
-    </div>
+        </nav>
+    </header>
 
     <div>
         {% if messages %}
             {% for message in messages %}
                 <div>{{message}}</div>
+                <br>
             {% endfor %}
         {% endif %}
     </div>
@@ -37,6 +42,7 @@
     {% block content %}
 
     {% endblock content %}
+
 
 </body>
 </html>
